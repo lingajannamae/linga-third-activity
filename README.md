@@ -29,3 +29,18 @@ Deliverable - Janna Mae V. Linga BSI/T 3D
 Answer: I choose to embed the review because they are closely related to the parent document and don’t need to exist independently
 2. Why did I choose to Reference the [Chef/User/Guest]?
 Answer: I choose to reference the chef to avoids duplication and keeps the database normalized.
+
+-------------------------------------------------------------------------------
+
+1. Authentication vs Authorization:
+o What is the difference between Authentication and Authorization in our
+code?
+o Answer: Authentication checks who you are while Authorization checks the user permission.
+2. Security (bcrypt):
+o Why did we use bcryptjs instead of saving passwords as plain text in
+MongoDB?
+o Answer: We use bcryptjs to hash passwords so that plain text passwords are not stored in the database. This will keep the user account safe.
+3. JWT Structure:
+o What does the protect middleware do when it receives a JWT from the
+client?
+o Answer: The protect middleware checks for a JWT token in the request header to identify the user. It then verifies the token using the server’s secret key to ensure it’s valid and not tampered with. Finally, it attaches the user information to req.user so protected routes know who is making the request.
