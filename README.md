@@ -31,6 +31,7 @@ Answer: I choose to embed the review because they are closely related to the par
 Answer: I choose to reference the chef to avoids duplication and keeps the database normalized.
 
 -------------------------------------------------------------------------------
+ACTIVITY 4
 
 1. Authentication vs Authorization:
 o What is the difference between Authentication and Authorization in our
@@ -44,3 +45,36 @@ o Answer: We use bcryptjs to hash passwords so that plain text passwords are not
 o What does the protect middleware do when it receives a JWT from the
 client?
 o Answer: The protect middleware checks for a JWT token in the request header to identify the user. It then verifies the token using the server’s secret key to ensure it’s valid and not tampered with. Finally, it attaches the user information to req.user so protected routes know who is making the request.
+
+
+-------------------------------------------------------------------------------
+ACTIVITY 5
+
+![alt text](image-1.png)
+![alt text](image-3.png)
+
+1. [ ] Code runs via npm run test:coverage with all tests passing (Green).
+2. [ ] The Jest Coverage Table is copied and pasted into your README.
+3. [ ] The Formal Unit Test Documentation Table (from Part 5) is completed and included in
+your README.
+4. [ ] GitHub Repo link submitted.
+
+Essay Questions:
+1. Mocking:
+o Explain in your own words why we mocked Dish.find and jwt.verify. What
+specific problem does mocking solve in Unit Testing?
+o Answer: Mocking in unit testing replaces real dependencies like databases (e.g., Dish.find) or external libraries with fake versions. We mocked database queries to avoid real MongoDB dependencies and authentication token validation (jwt.verify) to simulate valid/invalid scenarios consistently. This solves dependency isolation, making tests faster, more reliable, and independent of external systems like databases, APIs, or authentication services.
+
+2. Code Coverage:
+o Look at your Jest Coverage report. Explain what % Branch coverage means. If your
+Branch coverage is at 50%, what does that tell you about your tests? (Hint: Think
+about if/else statements).
+o Answer: Branch coverage measures tested decision paths (e.g., if, else, switch, error-handling). A 50% branch coverage means only half of the paths were tested. For instance, a successful 'if' condition might be tested, but not the 'else' or error scenario. This leaves logical paths untested, increasing the risk of hidden bugs under unexpected situations.
+
+3. Testing Middleware:
+o In our authMiddleware.test.js, why did we use jest.fn() for the next variable, and
+why did we assert expect(next).not.toHaveBeenCalled() in the failure scenario?
+o Answer: We asserted expect(next).not.toHaveBeenCalled() in the failure scenario to ensure that unauthorized users are blocked from accessing protected routes. If authentication fails, the middleware should stop the request and return an error response instead of allowing execution to continue.
+This confirms that the middleware properly enforces security by preventing access when authentication requirements are not met.
+
+
