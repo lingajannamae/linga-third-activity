@@ -77,4 +77,26 @@ why did we assert expect(next).not.toHaveBeenCalled() in the failure scenario?
 o Answer: We asserted expect(next).not.toHaveBeenCalled() in the failure scenario to ensure that unauthorized users are blocked from accessing protected routes. If authentication fails, the middleware should stop the request and return an error response instead of allowing execution to continue.
 This confirms that the middleware properly enforces security by preventing access when authentication requirements are not met.
 
+-------------------------------------------------------------------------------
+ACTIVITY 6
 
+1. [ ] Code runs via npm test with all integration tests passing (Green).
+2. [ ] dbHelper.js successfully creates and clears the in-memory database.
+3. [ ] GitHub Repo link submitted.
+4. [ ] README.md updated with the following answers:
+
+README.md Questions:
+1.Unit vs. Integration:
+o Explain the difference between the Unit Test you wrote in Activity 5 and the
+Integration Test you wrote today. What does the Integration Test check that the
+Unit Test does not?
+o Answer: Unit Test focuses on testing a single part of the application in isolation while Integration Test focuses on how testing how different parts of the system work together. Unlike unit tests, integration tests verify the full flow of a request and ensure that everything is properly connected and working as a whole.
+2. In-Memory Databases:
+o Why did we install mongodb-memory-server instead of just connecting our tests
+to our real MongoDB Atlas URI? Mention at least two reasons.
+o Answer: Using mongodb-memory-server instead of a real MongoDB Atlas database to make testing safer and faster. It creates a temporary database in memory, so it does not affect real data and prevents accidental changes or deletions. It also runs locally, which makes tests faster since there is no need for an internet connection.
+3. Supertest:
+o What is the role of supertest in our test file? Why didn't we use Postman for this?
+o Answer: Supertest is used to simulate HTTP requests like GET and POST directly in our test code, allowing us to automatically test our API endpoints. We did not use Postman because it is a manual testing tool, while Supertest works with Jest to automate tests. This makes testing faster, repeatable, and useful for continuous integration.
+
+-------------------------------------------------------------------------------
